@@ -1,0 +1,45 @@
+.categoryProducts {
+  padding: 30px 50px;
+  display: flex;
+
+  .left {
+    flex: 1;
+    position: sticky;
+    height: 100%;
+    top: 50px;
+
+    .filterItems {
+      margin-bottom: 30px;
+
+      h2 {
+        font-weight: 400;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .inputItems {
+        margin-bottom: 10px;
+        label {
+          margin-left: 10px;
+          cursor: pointer;
+        }
+        span {
+          padding-inline: 5px;
+        }
+      }
+    }
+  }
+
+  .right {
+    flex: 3;
+
+    .categoryImage {
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}

@@ -1,65 +1,65 @@
-.card{
-    width:200px;
-    // height: 400px;//than shrink ing and details
-// border: solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.card {
+  width: 200px;
+  // height: 400px;//than shrink ing and details
+  // border: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
+  position: relative;
+  //   margin-bottom: 30px;
+  .new-season {
+    position: absolute;
+    z-index: 3;
+
+    background-color: lightgreen;
+    padding: 3px 5px;
+    top: 5px;
+    left: 10px;
+
+    font-family: math, sans-serif;
+    font-size: 12px;
+    // text-shadow: 0 0 1x rgb(187, 185, 185);
+  }
+  .images {
+    width: 100%;
+    height: 250px;
     position: relative;
-    .new-season{
-        position: absolute;
-        z-index: 3;
 
-        background-color: lightgreen;
-        padding: 3px 5px;
-        top: 5px;
-        left: 10px;
-
-        font-family: math, sans-serif;
-        font-size: 12px;
-        // text-shadow: 0 0 1x rgb(187, 185, 185);
+    overflow: hidden;
+    &:hover {
+      .secondary {
+        z-index: 2;
+      }
     }
-    .images{
-        width: 100%;
-        height:250px;
-        position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      // //to fit this img in container/box we use object-fit property
+      object-fit: cover;
 
-        overflow: hidden;
-        &:hover{
-            .secondary{
-                z-index: 2;
-            }
-        }
-        img{
-            width: 100%;
-            height: 100%;
-            // //to fit this img in container/box we use object-fit property
-            object-fit: cover;
-
-            position: absolute;
-        }
-        .primary{
-            z-index: 1;
-        }
+      position: absolute;
     }
-    
-    h3{
-        font-weight: 500;
-        font-family: math,sans-serif;
-        font-size: 16px;
-        padding-block:10px;
+    .primary {
+      z-index: 1;
     }
+  }
 
-    .prices{
-        display: flex;
-        gap: 20px;
-       span{
-           &:first-child{
-               text-decoration-line:line-through;
-               color:#555;
-           }
-       }
+  h3 {
+    font-weight: 500;
+    font-family: math, sans-serif;
+    font-size: 16px;
+    padding-block: 10px;
+  }
+
+  .prices {
+    display: flex;
+    gap: 20px;
+    span {
+      &:first-child {
+        text-decoration-line: line-through;
+        color: #555;
+      }
     }
-
+  }
 }

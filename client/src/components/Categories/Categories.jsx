@@ -12,7 +12,7 @@ const Categories = () => {
             alt=""
           />
           <button>
-            <Link className="links" to="/products/1">
+            <Link className="links" to="/category-products/1">
               Sale
             </Link>
           </button>
@@ -23,7 +23,7 @@ const Categories = () => {
             alt=""
           />
           <button>
-            <Link to="/products/1" className="links">
+            <Link to="/category-products/1" className="links">
               Women
             </Link>
           </button>
@@ -36,7 +36,7 @@ const Categories = () => {
             alt=""
           />
           <button>
-            <Link to="/products/1" className="links">
+            <Link to="/category-products/1" className="links">
               New Season
             </Link>
           </button>
@@ -44,7 +44,7 @@ const Categories = () => {
       </div>
       <div className="col col-large">
         <div className="row">
-            {/* first row have 2 col,each col have one row */}
+          {/* first row have 2 col,each col have one row */}
           <div className="col">
             <div className="row">
               <img
@@ -52,7 +52,7 @@ const Categories = () => {
                 alt=""
               />
               <button>
-                <Link to="/products/1" className="links">
+                <Link to="/category-products/1" className="links">
                   Men
                 </Link>
               </button>
@@ -66,7 +66,7 @@ const Categories = () => {
                 alt=""
               />
               <button>
-                <Link to="/products/1" className="links">
+                <Link to="/category-products/1" className="links">
                   Accessories
                 </Link>
               </button>
@@ -79,7 +79,7 @@ const Categories = () => {
             alt=""
           />
           <button>
-            <Link to="/products/1" className="links">
+            <Link to="/category-products/1" className="links">
               Shoes
             </Link>
           </button>
