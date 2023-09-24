@@ -2,7 +2,7 @@ import React from 'react';
 import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom';
 import { Footer, Navbar } from './components';
 import { Home, ProductDetails, Products } from './pages';
-
+import "./App.scss";
 
 
 const Layout = () => { 
