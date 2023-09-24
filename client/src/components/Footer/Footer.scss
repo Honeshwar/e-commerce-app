@@ -1,50 +1,48 @@
-.footer{
-    margin:100px 100px 20px 100px;
-    .top{
-        display: flex;
-        gap:50px; //work for col because flexbox is 1D
-        // flex-col or flex-row b/w gap (1D) define like in grid
-        .items{
-            //equal width to all container,equally grow
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap:10px;//work for row because flexbox is 1D
-            text-align: justify;
-            font-size: 14px;
-            // border: solid;
-            h1{
-                font-size: 18px;
-                font-weight: 500;
-                color:#3d3d3d;
-            }
-           font-family: math, sans-serif;
-            color:gray;
-        
-        }
+.footer {
+  margin: 60px 100px 20px 100px;
+  .top {
+    display: flex;
+    gap: 50px; //work for col because flexbox is 1D
+    // flex-col or flex-row b/w gap (1D) define like in grid
+    .items {
+      //equal width to all container,equally grow
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px; //work for row because flexbox is 1D
+      text-align: justify;
+      font-size: 14px;
+      // border: solid;
+      h1 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #3d3d3d;
+      }
+      font-family: math, sans-serif;
+      color: gray;
     }
-    .bottom{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 50px;
-        .left{
-            display: flex;
-            align-items: center;
-            color:gray;
-            span{
-                color:#2879fe;
-                font-weight:bold;
-                font-size: 24px;
-                margin-right: 10px;
-            }
-        }
-        .right{
-            // margin-right: 100px;
-            img{
-                width:300px;
-            }
-        }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    .left {
+      display: flex;
+      align-items: center;
+      color: gray;
+      span {
+        color: #2879fe;
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 10px;
+      }
     }
-    
+    .right {
+      // margin-right: 100px;
+      img {
+        width: 300px;
+      }
+    }
+  }
 }
