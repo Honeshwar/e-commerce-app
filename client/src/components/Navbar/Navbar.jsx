@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Link} from "react-router-dom";
 import {MdKeyboardArrowDown, BsSearch, BiUserCircle, AiOutlineHeart, AiOutlineShoppingCart} from '../../utils/constant';
 // sass(tool) = scss(short way to write css/syntax) + css pre processor (convert scss to css than browser send)
 import './Navbar.scss';
+import {Cart} from '../';
 
 function Navbar() {
+  const [openCart, setOpenCart] = useState(false);
+  
   return (
     <div className='navbar'>
       {/* for padding */}
@@ -31,8 +34,10 @@ function Navbar() {
           <Link className="links">Accessories</Link>
           </div>
           </div>
-          <div className="center">
-          <h1 className='brand-name'>HoneshwarSTORE</h1>
+          <div className="center">       
+              <h1 className='brand-name'> 
+                <Link to="/" className="links">HoneshwarSTORE</Link>
+              </h1>     
           </div>
           <div className="right">
           <div className="navigation-links">
@@ -59,13 +64,14 @@ function Navbar() {
             <div className="items">
               <AiOutlineHeart/>
             </div>
-            <div className="items">
+            <div className="items" onClick={()=>setOpenCart((p)=>!p)}>
               <AiOutlineShoppingCart/>
               <span>0</span>
             </div>
           </div>
           </div>
         </div>
+        {openCart && <Cart/>}
     </div>
   )
 }

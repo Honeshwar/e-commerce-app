@@ -1,6 +1,7 @@
 .navbar{
     height:70px;
     // border:solid;
+    position: relative;// for cart
     .wrapper{
         height: 100%;
         padding: 10px 20px;
@@ -23,10 +24,12 @@
         }
         .center{
             .brand-name{
+                a{
                 color:green;
                 font: 1.5rem sans-serif;
                 text-shadow: 0 0 .2px black;
                 font-family: math,sans-serif;
+                }
             }
         }
         .right{
@@ -40,6 +43,7 @@
             .icons{
                 display: flex;
                 color:gray;
+                cursor: pointer;
                 span{
                     position:absolute;
                     top:-10px;
