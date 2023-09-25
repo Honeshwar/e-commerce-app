@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BiSolidCartDownload } from "react-icons/bi";
-import { MdBalance } from "react-icons/md";
-
+import { AiOutlineHeart, BiSolidCartDownload, MdBalance} from '../../utils/constant'
 import "./Product.scss";
 
 function Products() {

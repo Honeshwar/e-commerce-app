@@ -1,6 +1,6 @@
 import React from 'react'
 import './Cart.scss'
-import {AiFillDelete} from "react-icons/ai"
+import {AiFillDelete} from "../../utils/constant";
 function Cart() {
     const items = [
       {
