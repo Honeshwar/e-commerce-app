@@ -1,42 +1,70 @@
 import React, { useState } from "react";
-import { AiOutlineHeart, BiSolidCartDownload, MdBalance} from '../../utils/constant'
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import { addToCart } from "../../redux/cartReducer";
+import {
+  AiOutlineHeart,
+  BiSolidCartDownload,
+  MdBalance,
+} from "../../utils/constant";
 import "./Product.scss";
 
 function Products() {
-  const [selectedImage, setSelectedImage] = useState(0); //0= index selected image
+  const prodId = useParams().id;
+  const [selectedImage, setSelectedImage] = useState("img"); //key name store in state for comp use
   const [quantity, setQuantity] = useState(1);
 
-  const data = [
-    "https://images.pexels.com/photos/10026491/pexels-photo-10026491.png?auto-compress&cs=tinysrgb&w=1600&lazy=load",
-    "https://images.pexels.com/photos/12179283/pexels-photo-12179283.jpeg?auto-compress&cs-tinysrgb&w=1600&lazy=load",
-  ];
+  // const data = [
+  //   "https://images.pexels.com/photos/10026491/pexels-photo-10026491.png?auto-compress&cs=tinysrgb&w=1600&lazy=load",
+  //   "https://images.pexels.com/photos/12179283/pexels-photo-12179283.jpeg?auto-compress&cs-tinysrgb&w=1600&lazy=load",
+  // ];
+  const { data, loading, error } = useFetch(`/products/${prodId}?populate=*`);
+  console.log(data);
+  const dispatch = useDispatch();
   return (
     <div className="product">
       <div className="left">
         <div className="images">
           <img
-            src={data[0]}
+            src={
+              process.env.REACT_APP_API_UPLOAD_URL +
+              data?.attributes?.img?.data?.attributes?.url
+            }
             alt={"product"}
-            onClick={() => setSelectedImage(0)}
+            onClick={() =>
+              setSelectedImage("img"
+              )
+            }
           />
           <img
-            src={data[1]}
+            src={
+              process.env.REACT_APP_API_UPLOAD_URL +
+              data?.attributes?.img2?.data?.attributes?.url
+            }
             alt={"product"}
-            onClick={() => setSelectedImage(1)}
+            onClick={() =>
+              setSelectedImage(
+            "img2"
+              )
+            }
           />
         </div>
         <div className="mainImg">
-          <img src={data[selectedImage]} alt={"product"} />
+          <img
+            src={
+             process.env.REACT_APP_API_UPLOAD_URL +
+                  data?.attributes[selectedImage]?.data?.attributes?.url
+            }
+            alt={"product"}
+          />
         </div>
       </div>
       <div className="right">
-        <h1>T-Shirt</h1>
-        <span className="price">Rs 999</span>
+        <h1>{data?.attributes?.title}</h1>
+        <span className="price">Rs {data?.attributes?.price}</span>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          voluptatem reiciendis, dignissimos optio maiores nobis quo magnam
-          ratione praesentium saepe nihil libero consectetur soluta quibusdam
-          aspernatur non minima atque totam.
+         {data?.attributes?.desc}
         </p>
         <div className="quantity">
           <button
@@ -50,7 +78,13 @@ function Products() {
             +
           </button>
         </div>
-        <button type="button" className="addToCart">
+        <button type="button" className="addToCart" onClick={()=>dispatch(addToCart({
+          id:data?.id,
+          desc:data?.attributes?.desc,
+          price:data?.attributes?.price,
+          img:data?.attributes?.img?.data?.attributes?.url,
+          quantity:quantity
+        }))}>
           <BiSolidCartDownload />
           Add to cart
         </button>

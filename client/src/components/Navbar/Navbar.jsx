@@ -4,10 +4,17 @@ import {MdKeyboardArrowDown, BsSearch, BiUserCircle, AiOutlineHeart, AiOutlineSh
 // sass(tool) = scss(short way to write css/syntax) + css pre processor (convert scss to css than browser send)
 import './Navbar.scss';
 import {Cart} from '../';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
   const [openCart, setOpenCart] = useState(false);
+  const products = useSelector(state=>state.cart.products);
   
+  const totalProductsInCart = ()=>{
+    let total = 0;
+    products.forEach(item => total += item.quantity );
+    return total;//ef rs 123.00
+  }
   return (
     <div className='navbar'>
       {/* for padding */}
@@ -66,7 +73,7 @@ function Navbar() {
             </div>
             <div className="items" onClick={()=>setOpenCart((p)=>!p)}>
               <AiOutlineShoppingCart/>
-              <span>0</span>
+              <span>{totalProductsInCart()}</span>
             </div>
           </div>
           </div>

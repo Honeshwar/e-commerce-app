@@ -2,43 +2,46 @@ import React, { useState } from "react";
 import "./CategoryProducts.scss";
 import { List } from "../../components";
 import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 
 function Category() {
-  const id = parseInt(useParams().id);
+  const categoryId = parseInt(useParams().id);
+  const [sortBy, setSortBy] = useState("asc"); //sortby asc,desc,...
+  const [maxPrice, setmaxPrice] = useState(1500); //0 to upto maximum  price prooduct
   const [selectSubCategory, setSelectSubCategory] = useState([]); //sub cat store as collection
-  const [sortBy, setSortBy] = useState(null); //sortby asc,desc,...
-  const [maxPrice, setmaxPrice] = useState(100); //0 to upto maximum  price prooduct
 
-  const selectSubCategoryHandler = (subCategory) => {
-    setSelectSubCategory((pS) => [...pS, subCategory]);
+  const { data, loading, error } = useFetch(
+    `/sub-categories?[filters][categories][id][$eq]=${categoryId}
+    `, // sub categ title /name get to fill in filter of category page
+  );
+  // console.log(data);
+  const selectSubCategoryHandler = (e) => {
+    console.log(e);
+    let subCatId = e.target.value;
+    let isChecked = e.target.checked; // boolean but in html on string something
+    setSelectSubCategory(
+      isChecked
+        ? [...selectSubCategory, subCatId]
+        : selectSubCategory.filter((item) => item !== subCatId),
+    );
   };
+
   return (
     <div className="categoryProducts">
       <div className="left">
         <div className="filterItems">
           <h2>Product Categories</h2>
-          <div className="inputItems">
-            <input
-              type="checkbox"
-              id="shoes"
-              name="productType"
-              value="shoes"
-              onClick={() => selectSubCategoryHandler("shoes")}
-            />
-            <label htmlFor="shoes">shoes</label>
-          </div>
-          <div className="inputItems">
-            <input
-              type="checkbox"
-              id="hat"
-              name="productType"
-              value="hat"
-              onClick={() => selectSubCategoryHandler("hat")}
-            />{" "}
-            {/*productTpe=shoes&productType=hat send to server , each server differently behave mostly key=productType and duplicate value array store */}
-            <label htmlFor="hat">hat</label>
-            {/* use labeling and focusing on click */}
-          </div>
+          {data?.map((item) => (
+            <div className="inputItems">
+              <input
+                type="checkbox"
+                id={item.id}
+                value={item.id}
+                onClick={selectSubCategoryHandler}
+              />
+              <label htmlFor={item.id}>{item.attributes?.title}</label>
+            </div>
+          ))}
         </div>
         <div className="filterItems">
           <h2>Filter By Price</h2>
@@ -47,7 +50,7 @@ function Category() {
             <input
               type="range"
               min={0}
-              max={1000}
+              max={10000}
               defaultValue={100}
               onChange={(e) => setmaxPrice(e.target.value)}
             />
@@ -86,7 +89,7 @@ function Category() {
         </div>
         {/* category related list */}
         <List
-          categoryId={id}
+          categoryId={categoryId}
           sortBy={sortBy}
           maxPrice={maxPrice}
           selectedSubCategory={selectSubCategory}

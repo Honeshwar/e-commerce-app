@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
 import "./FeaturedProducts.scss";
 import { Card } from "../index";
-import axios from "axios";
+import useFetch from "../../hooks/useFetch";
 
 function FeaturedProducts(params) {
   // current static data ,after/badma api get karage
@@ -40,32 +39,11 @@ function FeaturedProducts(params) {
   //         oldPrice: 19,
   //         price: 12,},{id:2,},{id:3,}
   // ];
-
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    try {
-      const fetchData = async () => {
-        const response = await axios.get(
-          process.env.REACT_APP_API_URL + "/products?populate=*", //query for geting media ?populate=*by default strapi don't sent media
-          {
-            headers: {
-              Authorization: "bearer " + process.env.REACT_APP_API_TOKEN, //Some synonyms for word bearer in English are holder, or carrier.
-            },
-          },
-        );
-        console.log(response);
-        if (response.status === 200) {
-          setData(response.data.data);
-        } else {
-          throw new Error(response.message);
-        }
-      };
-      fetchData();
-    } catch (err) {
-      console.log(err.message);
-    }
-  }, []);
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filters][type][$eq]=${params.type}`,
+  );
+  // useFetch is an async func/hook no need to make it async
+  //it is hook that change reconcilation throught not each re-render
   return (
     <div className="featuredProducts">
       <div className="top">
@@ -78,9 +56,13 @@ function FeaturedProducts(params) {
         </p>
       </div>
       <div className="bottom">
-        {data.map((item) => {
-          return <Card item={item} key={item.id} />;
-        })}
+        {error
+          ? "Something went wrong"
+          : loading
+          ? "loading"
+          : data?.map((item) => {
+              return <Card item={item} key={item.id} />;
+            })}
       </div>
     </div>
   );
