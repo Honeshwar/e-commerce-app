@@ -62,9 +62,14 @@ function List({ categoryId, selectedSubCategory, maxPrice, sortBy }) {
   console.log("list", data, "selectedSubCategory,", selectedSubCategory);
   return (
     <div className="list">
-      {data?.map((item) => (
-        <Card item={item} />
-      ))}
+      {
+      error? 
+        "Something went wrong"
+            : loading? 
+              "loading"
+              : 
+              data?.map((item) => (<Card item={item} />))
+      }
     </div>
   );
 }
