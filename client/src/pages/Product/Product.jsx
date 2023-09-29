@@ -24,49 +24,43 @@ function Products() {
   const dispatch = useDispatch();
   return (
     <div className="product">
-      {error
-          ? "Something went wrong"
-          : loading
-          ? "loading"
-          :
-           <>
-            <div className="left">
-              <div className="images">
-                <img
-                  src={
-                    process.env.REACT_APP_API_UPLOAD_URL +
-                    data?.attributes?.img?.data?.attributes?.url
-                  }
-                  alt={"product"}
-                  onClick={() =>
-                    setSelectedImage("img"
-                    )
-                  }
-                />
-                <img
-                  src={
-                    process.env.REACT_APP_API_UPLOAD_URL +
-                    data?.attributes?.img2?.data?.attributes?.url
-                  }
-                  alt={"product"}
-                  onClick={() =>
-                    setSelectedImage(
-                  "img2"
-                    )
-                  }
-                />
-              </div>
-              <div className="mainImg">
-                <img
-                  src={
-                  process.env.REACT_APP_API_UPLOAD_URL +
-                        data?.attributes[selectedImage]?.data?.attributes?.url
-                  }
-                  alt={"product"}
-                />
-              </div>
-            </div>
-            <div className="right">
+      <div className="left">
+        <div className="images">
+          <img
+            src={
+              process.env.REACT_APP_API_UPLOAD_URL +
+              data?.attributes?.img?.data?.attributes?.url
+            }
+            alt={"product"}
+            onClick={() =>
+              setSelectedImage("img"
+              )
+            }
+          />
+          <img
+            src={
+              process.env.REACT_APP_API_UPLOAD_URL +
+              data?.attributes?.img2?.data?.attributes?.url
+            }
+            alt={"product"}
+            onClick={() =>
+              setSelectedImage(
+            "img2"
+              )
+            }
+          />
+        </div>
+        <div className="mainImg">
+          <img
+            src={
+             process.env.REACT_APP_API_UPLOAD_URL +
+                  data?.attributes[selectedImage]?.data?.attributes?.url
+            }
+            alt={"product"}
+          />
+        </div>
+      </div>
+      <div className="right">
         <h1>{data?.attributes?.title}</h1>
         <span className="price">Rs {data?.attributes?.price}</span>
         <p>
@@ -118,8 +112,6 @@ function Products() {
           <span>FAQ</span>
         </div>
       </div>
-          </>
-          }
     </div>
   );
 }

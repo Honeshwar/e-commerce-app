@@ -1,10 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import cartReducer from "./cartReducer";
-// console.log('cartReducer', cartReducer);
-
-
-// const persistConfig = {}
-
+console.log('cartReducer', cartReducer);
 const store = configureStore({
     reducer:{
         cart:cartReducer

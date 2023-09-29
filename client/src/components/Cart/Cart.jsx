@@ -3,10 +3,6 @@ import './Cart.scss'
 import {AiFillDelete} from "../../utils/constant";
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, resetCart } from '../../redux/cartReducer';
-import {loadStripe} from '@stripe/stripe-js';
-import makeRequest from '../../utils/makeRequest';
-
-
 function Cart() {
     // const items = [
     //   {
@@ -30,32 +26,12 @@ function Cart() {
     //     desc:"  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium aliquid commodi consectetur, cum veritatis alias quidem rem, officiis ad soluta ab dolorum accusantium sint corporis vitae veniam suscipit? Fuga, earum."
     // },
     // ];
-    
     const dispatch = useDispatch();
     const products = useSelector(state=>state.cart.products);// state={cart:{products:[]}}
     const totalPrice = ()=>{
       let total = 0;
       products.forEach(item => total += item.quantity * item.price);
       return total.toFixed(2);//ef rs 123.00
-    }
-
-    const handlePayment = async ()=>{
-      // Make sure to call `loadStripe` outside of a component’s render to avoid
-      // recreating the `Stripe` object on every render.
-      const stripePromise = loadStripe("pk_test_51NvFMgSFOJk2h94TRB7FjIF3JFMTgALdvuINjMDyLt7aZyNcBSZiO0hLaSqMb11RQcrC646SHEFwhvL33LpwH4LZ00wUMQ7dxK");
-
-      try {
-        const stripe = await stripePromise;
-        //it return by a controller that we make in order folder in strapi
-        const res = await makeRequest.post("/orders",{
-          products,
-        });
-        await stripe.redirectToCheckout({
-          sessionId:res.data.stripeSession.id,//it return by a controller that we make in order folder in strapi
-        })
-      } catch (error) {
-        console.log(error);
-      }
     }
   return (
     <div className="cart">
@@ -82,7 +58,7 @@ function Cart() {
           <span>SUBTOTAL</span>
           <span>&#8377;{totalPrice()}</span>
         </div>
-        <button type='button' className='checkout' onClick={handlePayment}>PROCEED TO CHECKOUT</button>
+        <button type='button' className='checkout'>PROCEED TO CHECKOUT</button>
         <span className="remove" onClick={()=>dispatch(resetCart())}>Reset Cart</span>
     </div>
   )
