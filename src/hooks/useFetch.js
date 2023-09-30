@@ -11,7 +11,7 @@ export default function useFetch(url) {
       const fetchData = async () => {
         setLoading(true);
         const response = await makeRequest.get(url);
-        // console.log("useFetcher ", response);
+        console.log("useFetcher ", response);
 
         if (response.status === 200) {
           setData(response.data.data);

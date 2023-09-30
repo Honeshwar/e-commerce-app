@@ -64,7 +64,7 @@ function Cart() {
             {products.map((item)=>(
                 <div className="cartItem" key={item.id}>
                   <div className="left">
-                    <img src={process.env.REACT_APP_API_UPLOAD_URL + item.img} alt={item.title} />
+                    <img src={item.img} alt={item.title} />
                   </div>
                   <div className="center">
                     <h4>{item.title}</h4>

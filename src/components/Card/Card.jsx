@@ -16,7 +16,7 @@ function Card({ item }) {
         <div className="images">
           <img
             src={
-              process.env.REACT_APP_API_UPLOAD_URL +
+             
               item.attributes?.img?.data?.attributes?.url
             } //optional conditing use full api data, undefined.undefined stop before it, stop when var undefine chain stop
             alt={item.attributes?.title}
@@ -24,7 +24,7 @@ function Card({ item }) {
           />
           <img
             src={
-              process.env.REACT_APP_API_UPLOAD_URL +
+             
               item.attributes?.img2?.data?.attributes?.url
             }
             alt={item.attributes?.title}
