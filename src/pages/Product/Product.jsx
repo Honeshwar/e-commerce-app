@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Loader } from "../../components";
 import useFetch from "../../hooks/useFetch";
 import { addToCart } from "../../redux/cartReducer";
 import {
@@ -27,7 +28,7 @@ function Products() {
       {error
           ? "Something went wrong"
           : loading
-          ? "loading"
+          ? <Loader/>
           :
            <>
             <div className="left">
@@ -67,57 +68,57 @@ function Products() {
               </div>
             </div>
             <div className="right">
-        <h1>{data?.attributes?.title}</h1>
-        <span className="price">Rs {data?.attributes?.price}</span>
-        <p>
-         {data?.attributes?.desc}
-        </p>
-        <div className="quantity">
-          <button
-            type="button"
-            onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}
-          >
-            -
-          </button>
-          {quantity}
-          <button type="button" onClick={() => setQuantity((prev) => prev + 1)}>
-            +
-          </button>
-        </div>
-        <button type="button" className="addToCart" onClick={()=>dispatch(addToCart({
-          id:data?.id,
-          desc:data?.attributes?.desc,
-          price:data?.attributes?.price,
-          img:data?.attributes?.img?.data?.attributes?.url,
-          quantity:quantity
-        }))}>
-          <BiSolidCartDownload />
-          Add to cart
-        </button>
-        <div className="link">
-          <div className="linkItems">
-            <AiOutlineHeart />
-            Add to wishlist
-          </div>
-          <div className="linkItems">
-            <MdBalance />
-            Add to compare
-          </div>
-        </div>
-        <div className="info">
-          <span>Vendor Polo</span>
-          <span>Product Type: T-Shirt</span>
-          <span>Tags: T-Shirt, Men, Top</span>
-        </div>
-        <hr />
-        <div className="info">
-          <span>DESCRIPTION</span>
-          <hr />
-          <span>ADDITIONAL INFORMATION</span>
-          <hr />
-          <span>FAQ</span>
-        </div>
-      </div>
+            <h1>{data?.attributes?.title}</h1>
+            <span className="price">Rs {data?.attributes?.price}</span>
+            <p>
+            {data?.attributes?.desc}
+            </p>
+            <div className="quantity">
+              <button
+                type="button"
+                onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}
+              >
+                -
+              </button>
+              {quantity}
+              <button type="button" onClick={() => setQuantity((prev) => prev + 1)}>
+                +
+              </button>
+            </div>
+            <button type="button" className="addToCart" onClick={()=>dispatch(addToCart({
+              id:data?.id,
+              desc:data?.attributes?.desc,
+              price:data?.attributes?.price,
+              img:data?.attributes?.img?.data?.attributes?.url,
+              quantity:quantity
+            }))}>
+              <BiSolidCartDownload />
+              Add to cart
+            </button>
+            <div className="link">
+              <div className="linkItems">
+                <AiOutlineHeart />
+                Add to wishlist
+              </div>
+              <div className="linkItems">
+                <MdBalance />
+                Add to compare
+              </div>
+            </div>
+            <div className="info">
+              <span>Vendor Polo</span>
+              <span>Product Type: T-Shirt</span>
+              <span>Tags: T-Shirt, Men, Top</span>
+            </div>
+            <hr />
+            <div className="info">
+              <span>DESCRIPTION</span>
+              <hr />
+              <span>ADDITIONAL INFORMATION</span>
+              <hr />
+              <span>FAQ</span>
+            </div>
+            </div>
           </>
           }
     </div>

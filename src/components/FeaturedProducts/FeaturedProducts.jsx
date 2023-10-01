@@ -1,5 +1,5 @@
 import "./FeaturedProducts.scss";
-import { Card } from "../index";
+import { Card, Loader } from "../index";
 import useFetch from "../../hooks/useFetch";
 
 function FeaturedProducts(params) {
@@ -56,13 +56,22 @@ function FeaturedProducts(params) {
         </p>
       </div>
       <div className="bottom">
-        {error
-          ? "Something went wrong"
-          : loading
-          ? "loading"
-          : data?.map((item) => {
-              return <Card item={item} key={item.id} />;
-            })}
+        {error ? (
+          "Something went wrong"
+        ) : loading ? (
+          <Loader />
+        ) : (
+          data?.map((item) => {
+            return <Card item={item} key={item.id} />;
+          })
+        )}
+        {data?.length === 0 && (
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQCkfQGx2QwjHqzXbpXPdWN4JaDHV0NuUtsXvWbCc&s"
+            style={{ margin: "auto" }}
+            alt="no product found"
+          />
+        )}
       </div>
     </div>
   );

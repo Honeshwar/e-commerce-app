@@ -70,6 +70,7 @@ function List({ categoryId, selectedSubCategory, maxPrice, sortBy }) {
               : 
               data?.map((item) => (<Card item={item} />))
       }
+      {data?.length === 0 && <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQCkfQGx2QwjHqzXbpXPdWN4JaDHV0NuUtsXvWbCc&s" style={{margin:"auto"}} alt="no product found"/>}
     </div>
   );
 }

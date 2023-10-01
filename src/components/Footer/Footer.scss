@@ -18,8 +18,17 @@
         font-weight: 500;
         color: #3d3d3d;
       }
-      font-family: math, sans-serif;
-      color: gray;
+      .item{
+        width: fit-content;
+        font-family: math, sans-serif;
+        color: gray;
+        text-transform: capitalize;
+        cursor: pointer;
+        &:hover{
+          text-decoration-line: underline;
+          transition: all 1s ease;
+        }
+      }
     }
   }
   .bottom {
@@ -31,8 +40,8 @@
       display: flex;
       align-items: center;
       color: gray;
-      span {
-        color: #2879fe;
+      a {
+        color: green;
         font-weight: bold;
         font-size: 24px;
         margin-right: 10px;

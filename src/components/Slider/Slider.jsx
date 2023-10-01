@@ -11,18 +11,18 @@ function Slider() {
   ];
 
   const prevSlide = ()=>{
-    setCurrSlide(currSlide === 0?2:(prevS)=>prevS-1);
+    setCurrSlide(currSlide === 0?data.length-1:(prevS)=>prevS-1);
     //cb use because setState asycn call, when happen we don't know, currSide not update
   }
   const nextSlide = ()=>{
-    setCurrSlide(currSlide === 2?0:(prevS)=>prevS+1);
+    setCurrSlide(currSlide === data.length-1?0:(prevS)=>prevS+1);
   }
   return (
     <div className="slider">
       <div className="container" style={{transform:`translateX(-${currSlide * 100}%)`}}>
-        <img src={data[0]} alt="slider" />
-        <img src={data[1]} alt="slider" />
-        <img src={data[2]} alt="slider" />
+       {data.map((imgUrl,index)=>(<img src={imgUrl} alt="slider"  key={index}/>))}
+        
+       
       </div>
       <div className="icons">
         <div className="icon" onClick={prevSlide}>

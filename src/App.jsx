@@ -3,13 +3,15 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Footer, Navbar } from "./components";
 import { Home, CategoryProducts, Product } from "./pages";
 import "./App.scss";
+import useFetch from "./hooks/useFetch";
 
 const Layout = () => {
+  const { data,error,loading } = useFetch("/categories");
   return (
     <>
-      <Navbar />
+      <Navbar categories={data} error={error} loading={loading} />
       <Outlet />
-      <Footer />
+      <Footer categories={data} error={error} loading={loading}/>
     </>
   );
 };

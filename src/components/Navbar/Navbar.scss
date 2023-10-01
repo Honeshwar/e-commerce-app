@@ -13,6 +13,11 @@
             align-items: center;
             padding-inline: 10px;
             // gap:20px;
+            text-transform: capitalize;
+            &:hover{
+                text-decoration-line: underline;
+                transition: all 1s ease;
+              }
         }
         .left{
             display: flex;

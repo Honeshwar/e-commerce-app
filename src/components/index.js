@@ -8,6 +8,7 @@ import Categories from "./Categories/Categories";
 import Contact from "./Contact/Contact";
 import List from "./List/List";
 import Cart from "./Cart/Cart";
+import Loader from "./Loading/Loader";
 
 //name export to all
 export {
@@ -19,5 +20,6 @@ export {
   Categories,
   Contact,
   List,
-  Cart
+  Cart,
+  Loader,
 };
