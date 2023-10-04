@@ -36,7 +36,7 @@ function Products() {
                 <img
                   src={
                     
-                    data?.attributes?.img?.data?.attributes?.url
+                    data?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url
                   }
                   alt={"product"}
                   onClick={() =>
@@ -47,7 +47,7 @@ function Products() {
                 <img
                   src={
                     
-                    data?.attributes?.img2?.data?.attributes?.url
+                    data?.attributes?.img2?.data?.attributes?.formats?.thumbnail?.url
                   }
                   alt={"product"}
                   onClick={() =>
@@ -61,7 +61,7 @@ function Products() {
                 <img
                   src={
                   
-                        data?.attributes[selectedImage]?.data?.attributes?.url
+                        data?.attributes[selectedImage]?.data?.attributes?.formats?.small?.url
                   }
                   alt={"product"}
                 />
@@ -89,7 +89,7 @@ function Products() {
               id:data?.id,
               desc:data?.attributes?.desc,
               price:data?.attributes?.price,
-              img:data?.attributes?.img?.data?.attributes?.url,
+              img:data?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url,
               quantity:quantity
             }))}>
               <BiSolidCartDownload />

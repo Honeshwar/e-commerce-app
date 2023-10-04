@@ -11,12 +11,12 @@ import {
 import "./Navbar.scss";
 import { Cart } from "../";
 import { useSelector } from "react-redux";
-import Loader from "../Loading/Loader";
+// import Loader from "../Loading/Loader";
 
-function Navbar({categories,error,loading }) {
+function Navbar({ categories, error, loading }) {
   const [openCart, setOpenCart] = useState(false);
   const products = useSelector((state) => state.cart.products);
- 
+
   const totalProductsInCart = () => {
     let total = 0;
     products.forEach((item) => (total += item.quantity));
@@ -39,18 +39,21 @@ function Navbar({categories,error,loading }) {
             <MdKeyboardArrowDown />
           </div>
 
-           {error ? (
-              "Something went wrong"
-            ) : loading ? (
-              <Loader />
-            ) : (categories?.map((category) => (
-                <div className="items">
-                  <Link key={category.id} className="links" to={`/category-products/${category.id}`}>
+          {error
+            ? "Something went wrong"
+            : loading
+            ? "Loading..."
+            : categories?.map((category) => (
+                <div className="items" key={category.id}>
+                  <Link
+                    key={category.id}
+                    className="links"
+                    to={`/category-products/${category.id}`}
+                  >
                     {category.attributes.title}
                   </Link>
                 </div>
-            )))
-        }
+              ))}
         </div>
         <div className="center">
           <h1 className="brand-name">
@@ -62,10 +65,14 @@ function Navbar({categories,error,loading }) {
         <div className="right">
           <div className="navigation-links">
             <div className="items">
-              <Link className="links" to={"/"}>Homepage</Link>
+              <Link className="links" to={"/"}>
+                Homepage
+              </Link>
             </div>
             <div className="items">
-              <Link className="links" to={"/about"}>About</Link>
+              <Link className="links" to={"/about"}>
+                About
+              </Link>
             </div>
             <div className="items">
               <Link className="links" to={"#footer"}>

@@ -58,9 +58,10 @@ function Category() {
             </div>
             <div className="filterItems">
               <h2>Filter By Price</h2>
-              <div className="inputItems">
+              <div className="inputItems range">
                 <span>0</span>
                 <input
+                
                   type="range"
                   min={0}
                   max={10000}

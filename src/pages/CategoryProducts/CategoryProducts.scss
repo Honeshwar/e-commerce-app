@@ -42,11 +42,35 @@
         // background-position: center;
         // background-repeat: no-repeat;
         // background-size: cover;
-        &:hover{
+        &:hover {
           background-position: center bottom;
-          transition: all 2s ease-in-out ;
+          transition: all 2s ease-in-out;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 1050px) {
+    flex-direction: column;
+    row-gap: 20px;
+    .left {
+      // padding: 30px 50px;
+      position: static;
+      display: flex;
+      justify-content: space-between;
+      .range {
+        display: flex;
+        gap: 5px;
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .left {
+      // padding: 30px 50px;
+      position: static;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }

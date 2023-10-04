@@ -1,6 +1,18 @@
 .featuredProducts {
   margin: 100px 150px;
   // border: solid;
+  @media screen and (max-width: 750px) {
+    margin: 50px 50px;
+    .top {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+    }
+  }
   .top {
     display: flex;
     margin-bottom: 50px;
@@ -22,4 +34,3 @@
     // border: solid;
   }
 }
-

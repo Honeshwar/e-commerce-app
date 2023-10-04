@@ -15,18 +15,12 @@ function Card({ item }) {
         )}
         <div className="images">
           <img
-            src={
-             
-              item.attributes?.img?.data?.attributes?.url
-            } //optional conditing use full api data, undefined.undefined stop before it, stop when var undefine chain stop
+            src={item.attributes?.img?.data?.attributes?.formats?.small?.url} //optional conditing use full api data, undefined.undefined stop before it, stop when var undefine chain stop
             alt={item.attributes?.title}
             className="primary"
           />
           <img
-            src={
-             
-              item.attributes?.img2?.data?.attributes?.url
-            }
+            src={item.attributes?.img2?.data?.attributes?.formats?.small?.url}
             alt={item.attributes?.title}
             className="secondary"
           />

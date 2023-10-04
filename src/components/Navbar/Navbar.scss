@@ -1,72 +1,86 @@
-.navbar{
-    height:70px;
-    // border:solid;
-    position: relative;// for cart
-    .wrapper{
-        height: 100%;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .items{
-            display: flex;
-            align-items: center;
-            padding-inline: 10px;
-            // gap:20px;
-            text-transform: capitalize;
-            &:hover{
-                text-decoration-line: underline;
-                transition: all 1s ease;
-              }
-        }
-        .left{
-            display: flex;
-            align-items: center;
-            img{
-             height: 20px;
-                aspect-ratio: 1/1;
-            }
-        }
-        .center{
-            .brand-name{
-                a{
-                color:green;
-                font: 1.5rem sans-serif;
-                text-shadow: 0 0 .2px black;
-                font-family: math,sans-serif;
-                }
-            }
-        }
-        .right{
-            display: flex;
-            .navigation-links{
-                display: flex;
-            }
-            .items{
-                position: relative;
-            }
-            .icons{
-                display: flex;
-                color:gray;
-                cursor: pointer;
-                span{
-                    position:absolute;
-                    top:-10px;
-                    right:-4px;
-
-                    width: 20px;
-                    height:20px;
-                    border-radius: 50%;
-                    background-color: blue;
-                    color:white;
-                    font-size: .8rem;
-                    
-                    display: flex;
-                    justify-content: center;
-                    align-items:center ;
-                }
-            
-            }
-        }
+.navbar {
+    width: 100%;
+  height: 70px;
+  // border:solid;
+  position: relative; // for cart
+  .wrapper {
+    height: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .items {
+      display: flex;
+      align-items: center;
+      padding-inline: 10px;
+      // gap:20px;
+      text-transform: capitalize;
+      &:hover {
+        text-decoration-line: underline;
+        transition: all 1s ease;
+      }
     }
+    .left {
+      display: flex;
+      align-items: center;
+      img {
+        height: 20px;
+        aspect-ratio: 1/1;
+      }
+      @media (max-width: 1200px) {
+        display: none;
+      }
+    }
+    .center {
+      .brand-name {
+        a {
+          color: green;
+          font: 1.5rem sans-serif;
+          text-shadow: 0 0 0.2px black;
+          font-family: math, sans-serif;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      .navigation-links {
+        display: flex;
+        @media (max-width: 900px) {
+          display: none;
+        }
+      }
+      .items {
+        position: relative;
+      }
+      .icons {
+        display: flex;
+        color: gray;
+        cursor: pointer;
+        span {
+          position: absolute;
+          top: -10px;
+          right: -4px;
+
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: blue;
+          color: white;
+          font-size: 0.8rem;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .items {
+          @media (max-width: 900px) {
+            display: none;
+            &:last-child {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
 }

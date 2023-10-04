@@ -5,7 +5,7 @@
   overflow: hidden;
   .container {
     width: 100%;
-    // height: 100%;
+    height: 100%;
     display: flex;
     transition: all 1s ease; //trana state change an html container
     img {
@@ -19,7 +19,7 @@
   .icons {
     position: absolute;
     width: fit-content;
-    bottom: 100px;
+    bottom: 70px;
 
     //center , entire parent container width take both zero than margin work
     left: 0;
@@ -40,12 +40,19 @@
       font-size: large;
       // padding: 10px;
       text-shadow: 0 0 2px black;
-      color:black;
 
       &:hover {
         color: black;
         background-color: white;
         border: none;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      bottom: 30px;
+      .icon {
+        width: 35px;
+        height: 30px;
       }
     }
   }

@@ -42,10 +42,7 @@ function Footer({ categories,error,loading }) {
         <div className="items">
           <h1>About</h1>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            velit et reprehenderit voluptatum inventore dolore, error alias
-            nulla nam fugit labore natus nobis facilis voluptates dolores quae
-            placeat aliquam iusto!
+            An ecommerce business uses digital methods to sell products and services to customers. Ecommerce businesses can be online-only or have a physical presence as well. Selling to customers online typically requires a website or digital storefront, plus a way to process payments digitally and ship orders to customers.
           </p>
         </div>
         <div className="items">
