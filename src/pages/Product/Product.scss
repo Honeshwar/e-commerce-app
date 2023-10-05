@@ -3,7 +3,6 @@
   height: 100%;
   margin-block: 50px;
   display: flex;
-  //   justify-content: space-evenly;
   gap: 50px;
   .left {
     flex: 1;
@@ -35,8 +34,6 @@
     align-items: flex-start;
     row-gap: 25px;
     h1 {
-      //   border: solid;
-      //   font-size: 20px;
       font-weight: bold;
       font-family: math, sans-serif;
       text-transform: capitalize;
@@ -95,7 +92,6 @@
       }
     }
     .info {
-      //   margin-top: 30px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -103,7 +99,6 @@
       font-size: 12px;
       hr {
         width: 200px;
-        // border: 0.5px solid rgb(190, 188, 188);
       }
     }
     hr {

@@ -11,7 +11,6 @@ import {TiSocialTwitter} from "react-icons/ti"
 import {AiFillGoogleCircle} from "react-icons/ai"
 import {BiLogoPinterest} from "react-icons/bi"
 import {AiFillDelete} from "react-icons/ai"
-// import { AiOutlineHeart } from "react-icons/ai";
 import { BiSolidCartDownload } from "react-icons/bi";
 import { MdBalance } from "react-icons/md";
 

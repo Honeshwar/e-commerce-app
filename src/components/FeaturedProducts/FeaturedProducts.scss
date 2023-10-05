@@ -1,6 +1,5 @@
 .featuredProducts {
   margin: 100px 150px;
-  // border: solid;
   @media screen and (max-width: 750px) {
     margin: 50px 50px;
     .top {
@@ -31,6 +30,5 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
-    // border: solid;
   }
 }

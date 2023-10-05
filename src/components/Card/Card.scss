@@ -1,13 +1,10 @@
 .card {
   width: 200px;
-  // height: 400px;//than shrink ing and details
-  // border: solid;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   position: relative;
-  //   margin-bottom: 30px;
   .new-season {
     position: absolute;
     z-index: 3;
@@ -19,7 +16,6 @@
 
     font-family: math, sans-serif;
     font-size: 12px;
-    // text-shadow: 0 0 1x rgb(187, 185, 185);
   }
   .images {
     width: 100%;

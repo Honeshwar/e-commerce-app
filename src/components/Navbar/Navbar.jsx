@@ -11,7 +11,6 @@ import {
 import "./Navbar.scss";
 import { Cart } from "../";
 import { useSelector } from "react-redux";
-// import Loader from "../Loading/Loader";
 
 function Navbar({ categories, error, loading }) {
   const [openCart, setOpenCart] = useState(false);

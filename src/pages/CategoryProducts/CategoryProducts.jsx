@@ -21,9 +21,7 @@ function Category() {
   } = useFetch(
     `/categories/${categoryId}?populate=*`, // sub categ title /name get to fill in filter of category page
   );
-  console.log("category", category);
   const selectSubCategoryHandler = (e) => {
-    // console.log(e);
     let subCatId = e.target.value;
     let isChecked = e.target.checked; // boolean but in html on string something
     setSelectSubCategory(

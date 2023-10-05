@@ -12,7 +12,6 @@
       gap: 10px; //work for row because flexbox is 1D
       text-align: justify;
       font-size: 14px;
-      // border: solid;
       h1 {
         font-size: 18px;
         font-weight: 500;
@@ -48,7 +47,6 @@
       }
     }
     .right {
-      // margin-right: 100px;
       img {
         width: 300px;
       }
@@ -60,7 +58,6 @@
     .top {
       flex-direction: column-reverse;
       align-items: center;
-      // gap: 0;
     }
     .bottom {
       flex-direction: column;

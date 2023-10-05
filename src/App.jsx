@@ -5,6 +5,7 @@ import { Home, CategoryProducts, Product } from "./pages";
 import "./App.scss";
 import useFetch from "./hooks/useFetch";
 
+// layout of our application
 const Layout = () => {
   const { data,error,loading } = useFetch("/categories");
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
   );
 };
 
+// app component of our application
 function App() {
   const router = createBrowserRouter([
     {
