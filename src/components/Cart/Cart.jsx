@@ -6,6 +6,8 @@ import { removeItem, resetCart } from "../../redux/cartReducer";
 import { loadStripe } from "@stripe/stripe-js";
 // import makeRequestAPI from "../../utils/makeRequestAPI";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -59,7 +61,10 @@ function Cart() {
             </div>
             <div
               className="right"
-              onClick={() => dispatch(removeItem({ id: item.id }))}
+              onClick={() => {
+                dispatch(removeItem({ id: item.id }));
+                toast.success("Successfully Removed!");
+              }}
             >
               <AiFillDelete />
             </div>
@@ -74,7 +79,15 @@ function Cart() {
       <button type="button" className="checkout" onClick={handlePayment}>
         {paymentOnProgreess ? "Proceeding....." : " PROCEED TO CHECKOUT"}
       </button>
-      <span className="remove" onClick={() => dispatch(resetCart())}>
+      <span
+        className="remove"
+        onClick={() => {
+          if (products?.length > 0) {
+            dispatch(resetCart());
+            toast.success("Successfully Removed All!");
+          }
+        }}
+      >
         Reset Cart
       </span>
     </div>

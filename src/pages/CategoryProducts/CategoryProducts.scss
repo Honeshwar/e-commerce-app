@@ -16,6 +16,12 @@
         margin-bottom: 20px;
         font-size: 1.2rem;
       }
+      span,
+      label {
+        font-size: 14px;
+        font-family: math, sans-serif;
+        color: gray;
+      }
 
       .inputItems {
         margin-bottom: 10px;
@@ -40,8 +46,8 @@
         object-fit: cover;
         margin-bottom: 50px;
         &:hover {
-          background-position: center bottom;
-          transition: all 2s ease-in-out;
+          // background-position: center bottom;
+          // transition: all 2s ease-in-out;
         }
       }
     }

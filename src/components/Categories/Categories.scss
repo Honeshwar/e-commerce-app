@@ -3,25 +3,12 @@
   display: flex;
   gap: 10px;
   height: 80vh;
-  @media screen and (max-width: 750px) {
-    gap: 1px;
-    height: 50vh;
-    .col {
-      .row {
-        button {
-          a {
-            font-size: 10px;
-          }
-        }
-      }
-    }
-  }
   .col {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
-  
+
     .row {
       flex: 1;
       position: relative;
@@ -30,7 +17,7 @@
       align-items: center;
 
       overflow: hidden;
-      
+
       img {
         width: 100%;
         height: 100%;
@@ -74,11 +61,11 @@
     }
 
     @media screen and (max-width: 750px) {
-        gap:1px;
-        .row{
-          align-items: flex-end;
-        }
-     }
+      gap: 1px;
+      .row {
+        align-items: flex-end;
+      }
+    }
   }
   .col-large {
     flex: 2;
@@ -86,10 +73,30 @@
       display: flex;
       gap: 10px;
     }
+
     @media screen and (max-width: 750px) {
-        .row{
-            gap:1px;
+      .row {
+        gap: 1px;
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    gap: 1px;
+    height: 50vh;
+    .col {
+      .row {
+        button {
+          a {
+            font-size: 10px;
+          }
         }
-     }
+        img {
+          &:hover {
+            transform: scale(1.2);
+            transition: all 0.91s ease-in-out;
+          }
+        }
+      }
+    }
   }
 }

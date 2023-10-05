@@ -10,6 +10,7 @@ import {
   MdBalance,
 } from "../../utils/constant";
 import "./Product.scss";
+import { toast } from "react-toastify";
 
 function Products() {
   const prodId = useParams().id;
@@ -17,76 +18,85 @@ function Products() {
   const [quantity, setQuantity] = useState(1);
   const { data, loading, error } = useFetch(`/products/${prodId}?populate=*`);
   const dispatch = useDispatch();
-  
+
+  const addToCartHandler = () => {
+    dispatch(
+      addToCart({
+        id: data?.id,
+        desc: data?.attributes?.desc,
+        price: data?.attributes?.price,
+        img: data?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url,
+        quantity: quantity,
+      }),
+    );
+    toast.success(
+      `Added ${quantity} ${quantity === 1 ? "product" : "products"}`,
+    );
+  };
+
   return (
     <div className="product">
-      {error
-          ? "Something went wrong"
-          : loading
-          ? <Loader/>
-          :
-           <>
-            <div className="left">
-              <div className="images">
-                <img
-                  src={
-                    
-                    data?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url
-                  }
-                  alt={"product"}
-                  onClick={() =>
-                    setSelectedImage("img"
-                    )
-                  }
-                />
-                <img
-                  src={
-                    
-                    data?.attributes?.img2?.data?.attributes?.formats?.thumbnail?.url
-                  }
-                  alt={"product"}
-                  onClick={() =>
-                    setSelectedImage(
-                  "img2"
-                    )
-                  }
-                />
-              </div>
-              <div className="mainImg">
-                <img
-                  src={
-                  
-                        data?.attributes[selectedImage]?.data?.attributes?.formats?.small?.url
-                  }
-                  alt={"product"}
-                />
-              </div>
+      {error ? (
+        "Something went wrong"
+      ) : loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="left">
+            <div className="images">
+              <img
+                src={
+                  data?.attributes?.img?.data?.attributes?.formats?.thumbnail
+                    ?.url
+                }
+                alt={"product"}
+                onClick={() => setSelectedImage("img")}
+              />
+              <img
+                src={
+                  data?.attributes?.img2?.data?.attributes?.formats?.thumbnail
+                    ?.url
+                }
+                alt={"product"}
+                onClick={() => setSelectedImage("img2")}
+              />
             </div>
-            <div className="right">
+            <div className="mainImg">
+              <img
+                src={
+                  data?.attributes[selectedImage]?.data?.attributes?.formats
+                    ?.small?.url
+                }
+                alt={"product"}
+              />
+            </div>
+          </div>
+          <div className="right">
             <h1>{data?.attributes?.title}</h1>
             <span className="price">Rs {data?.attributes?.price}</span>
-            <p>
-            {data?.attributes?.desc}
-            </p>
+            <p>{data?.attributes?.desc}</p>
             <div className="quantity">
               <button
                 type="button"
-                onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}
+                onClick={() =>
+                  setQuantity((prev) => (prev === 1 ? 1 : prev - 1))
+                }
               >
                 -
               </button>
               {quantity}
-              <button type="button" onClick={() => setQuantity((prev) => prev + 1)}>
+              <button
+                type="button"
+                onClick={() => setQuantity((prev) => prev + 1)}
+              >
                 +
               </button>
             </div>
-            <button type="button" className="addToCart" onClick={()=>dispatch(addToCart({
-              id:data?.id,
-              desc:data?.attributes?.desc,
-              price:data?.attributes?.price,
-              img:data?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url,
-              quantity:quantity
-            }))}>
+            <button
+              type="button"
+              className="addToCart"
+              onClick={addToCartHandler}
+            >
               <BiSolidCartDownload />
               Add to cart
             </button>
@@ -113,9 +123,9 @@ function Products() {
               <hr />
               <span>FAQ</span>
             </div>
-            </div>
-          </>
-          }
+          </div>
+        </>
+      )}
     </div>
   );
 }

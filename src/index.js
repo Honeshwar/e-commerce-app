@@ -5,9 +5,9 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 const root = createRoot(document.getElementById("root"));
 root.render(//root prototype render func ho ga, app comp render/display
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 );

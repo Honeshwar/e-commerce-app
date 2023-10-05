@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./CategoryProducts.scss";
 import { List, Loader } from "../../components";
 import { useParams } from "react-router-dom";
@@ -7,7 +7,9 @@ import useFetch from "../../hooks/useFetch";
 function Category() {
   const categoryId = parseInt(useParams().id);
   const [sortBy, setSortBy] = useState("asc"); //sortby asc,desc,...
-  const [maxPrice, setmaxPrice] = useState(1500); //0 to upto maximum  price prooduct
+  // const range = useRef(1500); //0 to upto maximum  price prooduct
+  // range.current = 1500;
+  // const [maxPrice, setmaxPrice] = useState(1500); //0 to upto maximum  price prooduct
   const [selectSubCategory, setSelectSubCategory] = useState([]); //sub cat store as collection
 
   const { data, loading, error } = useFetch(
@@ -30,6 +32,31 @@ function Category() {
         : selectSubCategory.filter((item) => item !== subCatId),
     );
   };
+  // //prize range handler
+  // const prizeRangeHandler = (e) => {
+  //   //without re-render change range
+  //   range.current = e.target.value;
+  //   // setmaxPrice(e.target.value);
+  //   delayTaskHandler(e.target.value);
+  // };
+
+  // const delayTaskHandler = debounce(setmaxPrice, 1000);
+  // // Debounce function
+  // function debounce(expensiveFnCallCb, delay) {
+  //   let timeoutId; //closure help stored
+
+  //   return function (...args) {
+  //     // If there's a setTimeout in progress, cancel it
+  //     if (timeoutId) {
+  //       clearTimeout(timeoutId); //previous action/input ignore
+  //     }
+
+  //     // Schedule a new setTimeout
+  //     timeoutId = setTimeout(() => {
+  //       expensiveFnCallCb.apply(this, args); //args pass kar sake in exp func,apply call fun and bind this
+  //     }, delay);
+  //   };
+  // }
 
   return (
     <div className="categoryProducts">
@@ -43,7 +70,7 @@ function Category() {
             <div className="filterItems">
               <h2>Product Categories</h2>
               {data?.map((item) => (
-                <div className="inputItems">
+                <div className="inputItems" key={item.id}>
                   <input
                     type="checkbox"
                     id={item.id}
@@ -53,22 +80,26 @@ function Category() {
                   <label htmlFor={item.id}>{item.attributes?.title}</label>
                 </div>
               ))}
+              {!data ||
+                (data?.length === 0 && (
+                  <span>There is no subCategories for this category!</span>
+                ))}
             </div>
-            <div className="filterItems">
+            {/* <div className="filterItems">
               <h2>Filter By Price</h2>
               <div className="inputItems range">
                 <span>0</span>
                 <input
-                
                   type="range"
                   min={0}
                   max={10000}
                   defaultValue={100}
-                  onChange={(e) => setmaxPrice(e.target.value)}
+                  onChange={prizeRangeHandler}
+                  ref={range}
                 />
-                <span>{maxPrice}</span>
+                <span>{range.current}</span>
               </div>
-            </div>
+            </div> */}
             <div className="filterItems">
               <h2>Sort By</h2>
               <div className="inputItems">
@@ -110,12 +141,14 @@ function Category() {
               )}
             </div>
             {/* category related list */}
+            {/* {maxPrice === range.current && ( */}
             <List
               categoryId={categoryId}
               sortBy={sortBy}
-              maxPrice={maxPrice}
+              // maxPrice={maxPrice}
               selectedSubCategory={selectSubCategory}
             />
+            {/* )} */}
           </div>
         </>
       )}
