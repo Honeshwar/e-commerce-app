@@ -19,7 +19,7 @@ function Cart() {
 
   // Make sure to call `loadStripe` outside of a component’s render to avoid
   // recreating the `Stripe` object on every render.
-  const stripePromise = loadStripe(process.env.STRIPE_PUBLISABLE_KEY);
+  const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
   const handlePayment = async () => {
     if (!products || products?.length === 0) {
       return;
