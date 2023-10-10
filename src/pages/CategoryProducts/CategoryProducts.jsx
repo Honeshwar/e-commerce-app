@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./CategoryProducts.scss";
 import { List, Loader } from "../../components";
 import { useParams } from "react-router-dom";
