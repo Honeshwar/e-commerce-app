@@ -133,7 +133,7 @@ function Category() {
                 <div
                   className="categoryBannerImg"
                   style={{
-                    backgroundImage: `url(${category?.attributes?.bannerImg?.data?.attributes?.formats?.thumbnail?.url})`,
+                    backgroundImage: `url("${category?.attributes?.bannerImg?.data?.attributes?.formats?.thumbnail?.url}")`,
                   }}
                 >
                   {" "}
