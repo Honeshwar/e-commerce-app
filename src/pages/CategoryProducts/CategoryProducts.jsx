@@ -21,7 +21,7 @@ function Category() {
     error: categoryError,
     loading: categoryLoading,
   } = useFetch(
-    `/categories/${categoryId}?populate=*`, // sub categ title /name get to fill in filter of category page
+    `/categories/${categoryId}?populate=*`, // to get caterory by id , get data , so we can use to set banner,title
   );
   const selectSubCategoryHandler = (e) => {
     let subCatId = e.target.value;

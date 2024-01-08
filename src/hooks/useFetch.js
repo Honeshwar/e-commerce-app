@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import makeRequestAPI from "../utils/makeRequestAPI";
 
-export default function useFetch(url) {
+export default function useFetch(urlPath) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -10,7 +10,7 @@ export default function useFetch(url) {
     try {
       const fetchData = async () => {
         setLoading(true);
-        const response = await makeRequestAPI.get(url);
+        const response = await makeRequestAPI.get(urlPath);
         // console.log("useFetcher ", response);
 
         if (response.status === 200) {
@@ -25,7 +25,7 @@ export default function useFetch(url) {
       setError(true);
     }
     setLoading(false);
-  }, [url]);
+  }, [urlPath]);
 
   return {
     data,

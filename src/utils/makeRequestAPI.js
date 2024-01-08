@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = process.env.REACT_APP_API_URL; //localhost:1337
 
 const makeRequestAPI = axios.create({
   baseURL: baseUrl,

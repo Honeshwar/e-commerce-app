@@ -34,7 +34,7 @@ function Cart() {
       //it return by a controller that we make in order folder in strapi
       const res = await axios.post(process.env.REACT_APP_API_URL + "/orders", {
         products,
-      });
+      }); // validate orders and create stripe session at server and stripe session provide for payment, also payment methods,shipping country set. after payment where to redirect or failed payment
       await stripe.redirectToCheckout({
         sessionId: res.data.stripeSession.id, //it return by a controller that we make in order folder in strapi
       });
