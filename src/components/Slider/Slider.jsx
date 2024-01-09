@@ -5,9 +5,9 @@ function Slider() {
   const [currSlide, setCurrSlide] = useState(0); //0=define index of data array and its corresponding img
 
   const data = [
-    "https://res.cloudinary.com/drct1kgjv/image/upload/v1696331011/l7unvl6yoeb2enlj2rml.jpg",
-    "https://res.cloudinary.com/drct1kgjv/image/upload/v1696331112/p9w1kswfjz5z8kt4wzv9_19c916.jpg",
-    "https://res.cloudinary.com/drct1kgjv/image/upload/v1696331161/yqa8hgzilm2z9l2ylcnc_cb2dad.jpg",
+    "https://res.cloudinary.com/drct1kgjv/image/upload/v1704802465/dnaswbhzzxanorslhzst.jpg",
+    "http://res.cloudinary.com/drct1kgjv/image/upload/v1704802464/kzomnkphcraet9tcu7xa.jpg",
+    "http://res.cloudinary.com/drct1kgjv/image/upload/v1704802457/bnj6ph3r0vflhddqfzo4.jpg",
   ];
 
   const prevSlide = () => {
