@@ -1,35 +1,47 @@
-import React, { useState } from "react";
+// React imports
+import { useState } from "react";
+
+// Styles
 import "./CategoryProducts.scss";
+
+// Components
 import { List, Loader } from "../../components";
+
+// Router
 import { useParams } from "react-router-dom";
+
+// Hooks
 import useFetch from "../../hooks/useFetch";
 
+// Types
+import type { ApiResponse, Product } from "../../hooks/types/useFetch.types";
+
 function Category() {
-  const categoryId = parseInt(useParams().id);
+  const categoryId = parseInt(useParams().id ?? "1");
   const [sortBy, setSortBy] = useState("asc"); //sortby asc,desc,...
   // const range = useRef(1500); //0 to upto maximum  price prooduct
   // range.current = 1500;
   // const [maxPrice, setmaxPrice] = useState(1500); //0 to upto maximum  price prooduct
-  const [selectSubCategory, setSelectSubCategory] = useState([]); //sub cat store as collection
+  const [selectSubCategory, setSelectSubCategory] = useState<string[]>([]); //sub cat store as collection
 
-  const { data, loading, error } = useFetch(
+  const { data, loading, error } = useFetch<ApiResponse<Product>[]>(
     `/sub-categories?[filters][categories][id][$eq]=${categoryId}
-    `, // sub categ title /name get to fill in filter of category page
+    ` // sub categ title /name get to fill in filter of category page
   );
   const {
     data: category,
     error: categoryError,
     loading: categoryLoading,
   } = useFetch(
-    `/categories/${categoryId}?populate=*`, // to get caterory by id , get data , so we can use to set banner,title
+    `/categories/${categoryId}?populate=*` // to get caterory by id , get data , so we can use to set banner,title
   );
-  const selectSubCategoryHandler = (e) => {
+  const selectSubCategoryHandler = (e: any) => {
     let subCatId = e.target.value;
     let isChecked = e.target.checked; // boolean but in html on string something
     setSelectSubCategory(
       isChecked
         ? [...selectSubCategory, subCatId]
-        : selectSubCategory.filter((item) => item !== subCatId),
+        : selectSubCategory.filter((item) => item !== subCatId)
     );
   };
   // //prize range handler
@@ -73,11 +85,11 @@ function Category() {
                 <div className="inputItems" key={item.id}>
                   <input
                     type="checkbox"
-                    id={item.id}
+                    id={item.id + ""}
                     value={item.id}
                     onClick={selectSubCategoryHandler}
                   />
-                  <label htmlFor={item.id}>{item.attributes?.title}</label>
+                  <label htmlFor={item.id + ""}>{item.attributes?.title}</label>
                 </div>
               ))}
               {!data ||
@@ -133,7 +145,10 @@ function Category() {
                 <div
                   className="categoryBannerImg"
                   style={{
-                    backgroundImage: `url(${category?.attributes?.bannerImg?.data?.attributes?.formats?.thumbnail?.url})`,
+                    backgroundImage: `url(${
+                      (category as ApiResponse<Product>)?.attributes?.bannerImg
+                        ?.data?.attributes?.formats?.thumbnail?.url
+                    })`,
                   }}
                 >
                   {" "}

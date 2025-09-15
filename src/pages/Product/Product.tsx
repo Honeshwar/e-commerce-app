@@ -1,22 +1,44 @@
-import React, { useState } from "react";
+// React core
+import { useState } from "react";
+
+// Redux
 import { useDispatch } from "react-redux";
+
+// React Router
 import { useParams } from "react-router-dom";
+
+// Components
 import { Loader } from "../../components";
+
+// Hooks
 import useFetch from "../../hooks/useFetch";
+
+// Redux actions
 import { addToCart } from "../../redux/cartReducer";
+
+// Icons & constants
 import {
   AiOutlineHeart,
   BiSolidCartDownload,
   MdBalance,
 } from "../../utils/constant";
+
+// Styles
 import "./Product.scss";
+
+// Notifications
 import { toast } from "react-toastify";
+
+// Types
+import type { ApiResponse, Product } from "../../hooks/types/useFetch.types";
 
 function Products() {
   const prodId = useParams().id;
   const [selectedImage, setSelectedImage] = useState("img"); //key name store in state for comp use
   const [quantity, setQuantity] = useState(1);
-  const { data, loading, error } = useFetch(`/products/${prodId}?populate=*`);
+  const { data, loading, error } = useFetch<ApiResponse<Product>>(
+    `/products/${prodId}?populate=*`
+  );
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
@@ -27,10 +49,10 @@ function Products() {
         price: data?.attributes?.price,
         img: data?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url,
         quantity: quantity,
-      }),
+      })
     );
     toast.success(
-      `Added ${quantity} ${quantity === 1 ? "product" : "products"}`,
+      `Added ${quantity} ${quantity === 1 ? "product" : "products"}`
     );
   };
 
@@ -46,16 +68,16 @@ function Products() {
             <div className="images">
               <img
                 src={
-                  data?.attributes?.img?.data?.attributes?.formats?.thumbnail
-                    ?.url
+                  (data as ApiResponse<Product>)?.attributes?.img?.data
+                    ?.attributes?.formats?.thumbnail?.url
                 }
                 alt={"product"}
                 onClick={() => setSelectedImage("img")}
               />
               <img
                 src={
-                  data?.attributes?.img2?.data?.attributes?.formats?.thumbnail
-                    ?.url
+                  (data as ApiResponse<Product>)?.attributes?.img2?.data
+                    ?.attributes?.formats?.thumbnail?.url
                 }
                 alt={"product"}
                 onClick={() => setSelectedImage("img2")}
@@ -64,8 +86,8 @@ function Products() {
             <div className="mainImg">
               <img
                 src={
-                  data?.attributes[selectedImage]?.data?.attributes?.formats
-                    ?.small?.url
+                  data?.attributes[selectedImage as "img" | "img2"]?.data
+                    ?.attributes?.formats?.small?.url
                 }
                 alt={"product"}
               />

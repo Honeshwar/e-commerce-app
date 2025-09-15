@@ -1,4 +1,3 @@
-import React from "react";
 import "./Contact.scss";
 import {
   BsFacebook,
@@ -15,12 +14,12 @@ function Contact() {
         <h3>be in touch with us:</h3>
         <form
           action="https://formspree.io/f/xleylrjz"
-          method="POST" 
+          method="POST"
           className="contact-form"
         >
           <input type="email" name="" placeholder="Enter your email..." />
-          <input type="hidden" name="message" value="..."/>
-           
+          <input type="hidden" name="message" value="..." />
+
           <button type="submit">JOIN US</button>
         </form>
         <div className="social-media-icons">

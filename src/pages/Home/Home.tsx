@@ -1,13 +1,21 @@
-import React, { useEffect } from "react";
+// React and hooks
+import { useEffect } from "react";
+
+// React Router
 import { useLocation } from "react-router";
+
+// Notifications
 import { toast } from "react-toastify";
-// import { URLSearchParams } from "url";
+
+// Components
 import {
   Slider,
   FeaturedProducts,
   Categories,
   Contact,
 } from "../../components";
+
+// Styles
 import "./Home.scss";
 
 function Home() {
@@ -22,7 +30,7 @@ function Home() {
       myParam === "true"
         ? toast.success("Payment Successfully Happen!", {
             position: "top-center",
-            progress: true,
+            progress: 1,
           })
         : toast.error("Payment Failed!", { position: "top-center" });
     }

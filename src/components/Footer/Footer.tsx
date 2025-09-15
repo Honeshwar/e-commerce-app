@@ -1,25 +1,41 @@
-import React from "react";
+// React Router
 import { Link } from "react-router-dom";
+
+// Components
 import Loader from "../Loading/Loader";
+
+// Styles
 import "./Footer.scss";
 
-function Footer({ categories,error,loading }) {
+// Types
+import type { Categories } from "../../hooks/types/useFetch.types";
+
+function Footer({
+  categories,
+  error,
+  loading,
+}: {
+  categories: Categories[] | null;
+  error: boolean;
+  loading: boolean;
+}) {
   return (
     // not take wrapper because margin not padding inner things
     <div className="footer" id="footer">
       <div className="top">
         <div className="items">
           <h1>Category</h1>
-          { error ? (
-             "Something went wrong"
-              ) : loading ? (
-                <Loader />
-              ) : (categories?.map((category) => (
-            <div key={category.id} className={"item"}>
-              <span>{category.attributes?.title}</span>
-            </div>
-          )))
-          }
+          {error ? (
+            "Something went wrong"
+          ) : loading ? (
+            <Loader />
+          ) : (
+            categories?.map((category) => (
+              <div key={category.id} className={"item"}>
+                <span>{category.attributes?.title}</span>
+              </div>
+            ))
+          )}
         </div>
         <div className="items">
           <h1>Links</h1>
@@ -42,7 +58,11 @@ function Footer({ categories,error,loading }) {
         <div className="items">
           <h1>About</h1>
           <p>
-            An ecommerce business uses digital methods to sell products and services to customers. Ecommerce businesses can be online-only or have a physical presence as well. Selling to customers online typically requires a website or digital storefront, plus a way to process payments digitally and ship orders to customers.
+            An ecommerce business uses digital methods to sell products and
+            services to customers. Ecommerce businesses can be online-only or
+            have a physical presence as well. Selling to customers online
+            typically requires a website or digital storefront, plus a way to
+            process payments digitally and ship orders to customers.
           </p>
         </div>
         <div className="items">
@@ -57,7 +77,9 @@ function Footer({ categories,error,loading }) {
       </div>
       <div className="bottom">
         <div className="left">
-          <Link className="links" to="/">HoneshwarStore</Link>
+          <Link className="links" to="/">
+            HoneshwarStore
+          </Link>
           &copy; Copyright 2023. All Rights Reserved
         </div>
         <div className="right">

@@ -1,20 +1,36 @@
-import React, { useEffect, useRef } from "react";
+// React hooks for managing side effects and component state
+import { useEffect, useRef } from "react";
+
+// React Router for managing routing in the application
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+// React hook for getting information about the current location
 import { useLocation } from "react-router";
+
+// Components used in the application
 import { Footer, Navbar } from "./components";
+
+// Pages used in the application
 import { Home, CategoryProducts, Product } from "./pages";
-import "./App.scss";
+
+// Custom hook for fetching data from an API
 import useFetch from "./hooks/useFetch";
+
+// Toast notifications for displaying messages to the user
 import { ToastContainer } from "react-toastify";
+
+// CSS styles for the toast notifications
 import "react-toastify/dist/ReactToastify.css";
+
+// Type definitions for the useFetch hook
+import type { Categories } from "./hooks/types/useFetch.types";
 
 // layout of our application
 const Layout = () => {
-  const { data, error, loading } = useFetch("/categories");
+  const { data, error, loading } = useFetch<Categories[]>("/categories");
   // for scroll to top when navigate to another page/component or reset previous scroll
   const location = useLocation();
-  const prevLocation = useRef();//initially .current = undefined
-
+  const prevLocation = useRef<string>(""); //initially .current = undefined
 
   useEffect(() => {
     // Check if the location has changed

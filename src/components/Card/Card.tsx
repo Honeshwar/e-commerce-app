@@ -1,8 +1,7 @@
-import React from "react";
 import "./Card.scss";
 import { Link } from "react-router-dom";
 
-function Card({ item }) {
+function Card({ item }: { item: any }) {
   return (
     <Link to={`/product/${item.id}`} className="links">
       <div className="card">

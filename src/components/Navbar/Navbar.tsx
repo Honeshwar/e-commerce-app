@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+// React hook for managing state in functional components
+import { useState } from "react";
+
+// React Router component for creating links to other routes
 import { Link } from "react-router-dom";
+
+// Icons used in the application
 import {
   MdKeyboardArrowDown,
   BsSearch,
@@ -7,14 +12,33 @@ import {
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "../../utils/constant";
-// sass(tool) = scss(short way to write css/syntax) + css pre processor (convert scss to css than browser send)
+
+// Sass (SCSS + CSS preprocessor) styles for the Navbar component
 import "./Navbar.scss";
-import { Cart } from "../";
+
+// Cart component used in the Navbar
+import { Cart } from "..";
+
+// React Redux hook for accessing the Redux store state
 import { useSelector } from "react-redux";
 
-function Navbar({ categories, error, loading }) {
+// Type definitions for the Redux store state
+import type { ReduxStateType } from "../../redux/types/globals.types";
+
+// Type definitions for the useFetch hook
+import type { Categories } from "../../hooks/types/useFetch.types";
+
+function Navbar({
+  categories,
+  error,
+  loading,
+}: {
+  categories: Categories[] | null;
+  error: boolean;
+  loading: boolean;
+}) {
   const [openCart, setOpenCart] = useState(false);
-  const products = useSelector((state) => state.cart.products);
+  const products = useSelector((state: ReduxStateType) => state.cart.products);
 
   const totalProductsInCart = () => {
     let total = 0;
