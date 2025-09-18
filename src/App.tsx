@@ -25,6 +25,8 @@ import "react-toastify/dist/ReactToastify.css";
 // Type definitions for the useFetch hook
 import type { Categories } from "./hooks/types/useFetch.types";
 
+import "./App.scss";
+
 // layout of our application
 const Layout = () => {
   const { data, error, loading } = useFetch<Categories[]>("/categories");
