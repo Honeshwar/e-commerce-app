@@ -1,7 +1,8 @@
+import type { ApiResponse, Product } from "../../hooks/types/useFetch.types";
 import "./Card.scss";
 import { Link } from "react-router-dom";
 
-function Card({ item }: { item: any }) {
+function Card({ item }: { item: ApiResponse<Product> }) {
   return (
     <Link to={`/product/${item.id}`} className="links">
       <div className="card">

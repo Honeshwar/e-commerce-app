@@ -35,8 +35,8 @@ export interface Product {
   publishedAt: string;
   img: ImageRelation;
   img2: ImageRelation;
-  categories: Relation<any>;
-  sub_categories: Relation<any>;
+  categories: Relation<Categories>;
+  sub_categories: Relation<Categories>;
   bannerImg: ImageRelation;
   products: Product[];
 }
@@ -98,8 +98,8 @@ export interface Categories {
   id: number;
   attributes: {
     title: string;
-    createdAt: string,
-    updatedAt: string,
-    publishedAt: string
-  }
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
 }

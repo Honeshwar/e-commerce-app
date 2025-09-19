@@ -3,6 +3,15 @@ import { useEffect, useState } from "react";
 
 // API utility
 import makeRequestAPI from "../utils/makeRequestAPI";
+import type { ApiResponse, Product } from "./types/useFetch.types";
+
+interface ApiResponseType {
+  status: number;
+  data: {
+    data: ApiResponse<Product>[];
+  };
+  message?: string;
+}
 
 export default function useFetch<T>(urlPath: string) {
   const [data, setData] = useState<T | null>(null);
@@ -13,7 +22,7 @@ export default function useFetch<T>(urlPath: string) {
     try {
       const fetchData = async () => {
         setLoading(true);
-        const response: any = await makeRequestAPI.get(urlPath);
+        const response: ApiResponseType = await makeRequestAPI.get(urlPath);
         // console.log("useFetcher ", response);
 
         if (response.status === 200) {
@@ -26,8 +35,9 @@ export default function useFetch<T>(urlPath: string) {
     } catch (err: any) {
       console.error(err.message);
       setError(true);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, [urlPath]);
 
   return {
