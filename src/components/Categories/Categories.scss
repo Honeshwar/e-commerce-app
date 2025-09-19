@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 100%;
 
     .row {
       flex: 1;
@@ -42,7 +43,7 @@
           font-size: 14px;
         }
         @media screen and (max-width: 750px) {
-          margin-bottom: 20px;
+          margin-bottom: 40px;
           a {
             font-size: 10px;
           }
