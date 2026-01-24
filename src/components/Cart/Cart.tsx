@@ -25,7 +25,7 @@ function Cart() {
   // Make sure to call `loadStripe` outside of a component’s render to avoid
   // recreating the `Stripe` object on every render.
   const stripePromise = loadStripe(
-    "pk_test_51NvFMgSFOJk2h94TRB7FjIF3JFMTgALdvuINjMDyLt7aZyNcBSZiO0hLaSqMb11RQcrC646SHEFwhvL33LpwH4LZ00wUMQ7dxK"
+    "sk_test_51NvFMgSFOJk2h94TuL1nn7tLTTvOiDuxajGkIiToGn8kY3rQt3ztILHvk015EB8e4I1jf0b1c5uYahbGAA1oxKQL00k2gjXbSq"
   );
   const handlePayment = async () => {
     if (!products || products?.length === 0) {
