@@ -27,6 +27,18 @@
           text-decoration-line: underline;
           transition: all 1s ease;
         }
+
+        a{
+          font-family: math, sans-serif;
+          color: gray;
+          text-transform: capitalize;
+          text-decoration: none;
+          cursor: pointer;
+          &:hover {
+            text-decoration-line: underline;
+            transition: all 1s ease;
+          }
+        }
       }
     }
   }

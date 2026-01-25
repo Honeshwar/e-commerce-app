@@ -15,7 +15,7 @@ interface ApiResponseType {
 
 export default function useFetch<T>(urlPath: string) {
   const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {

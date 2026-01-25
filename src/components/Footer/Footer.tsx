@@ -32,7 +32,7 @@ function Footer({
           ) : (
             categories?.map((category) => (
               <div key={category.id} className={"item"}>
-                <span>{category.attributes?.title}</span>
+                <a href={`/category-products/${category.id}`}>{category.attributes?.title}</a>
               </div>
             ))
           )}
@@ -80,7 +80,7 @@ function Footer({
           <Link className="links" to="/">
             HoneshwarStore
           </Link>
-          &copy; Copyright 2023. All Rights Reserved
+          &copy; Copyright 2026. All Rights Reserved
         </div>
         <div className="right">
           <img

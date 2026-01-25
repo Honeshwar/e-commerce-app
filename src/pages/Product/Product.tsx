@@ -136,18 +136,24 @@ function Products() {
                 Add to compare
               </div>
             </div>
-            <div className="info">
-              <span>Vendor Polo</span>
-              <span>Product Type: T-Shirt</span>
-              <span>Tags: T-Shirt, Men, Top</span>
-            </div>
+            {/* <div className="info">
+              <span>{data?.attributes?.title ?? "No Title"}</span>
+              <span>Product Type: {data?.attributes?.type ?? "No Type"}</span>
+              <span>Tags: {data?.attributes?.sub_categories?.data?.map((tag) => tag.attributes?.title).join(", ") ?? "No Tags"}</span>
+            </div> */}
             <hr />
             <div className="info">
-              <span>DESCRIPTION</span>
-              <hr />
+              {/* <span>DESCRIPTION</span>
+               <span>{data?.attributes?.desc ?? "No Description"}</span>
+              <hr /> */}
               <span>ADDITIONAL INFORMATION</span>
+              <span>Product Type: {data?.attributes?.type ?? "No Type"}</span>
+              <span>category: {data?.attributes?.categories?.data?.map((tag) => tag.attributes?.title).join(", ") ?? "No Category"}</span>
+              <span>sub category: {data?.attributes?.sub_categories?.data?.map((tag) => tag.attributes?.title).join(", ") ?? "No Sub Category"}</span>
+              {/* <span>{data?.attributes?.additionalInfo ?? "No Additional Info"}</span> */}
               <hr />
               <span>FAQ</span>
+              <span>{data?.attributes?.faq ?? "No FAQ"}</span>
             </div>
           </div>
         </>

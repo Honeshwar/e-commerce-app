@@ -49,7 +49,7 @@ function Navbar({
     <div className="navbar">
       {/* for padding */}
       <div className="wrapper">
-        <div className="left">
+        {/* <div className="left">
           <div className="items">
             <img
               src="https://freesvg.org/storage/img/thumb/Flag-of-India.png"
@@ -77,7 +77,7 @@ function Navbar({
                   </Link>
                 </div>
               ))}
-        </div>
+        </div> */}
         <div className="center">
           <h1 className="brand-name">
             <Link to="/" className="links">
@@ -92,19 +92,34 @@ function Navbar({
                 Homepage
               </Link>
             </div>
-            <div className="items">
+            {/* <div className="items">
               <Link className="links" to={"/about"}>
                 About
               </Link>
-            </div>
+            </div> */}
             <div className="items">
               <Link className="links" to={"#footer"}>
-                Contact
+                Contact Us
               </Link>
             </div>
           </div>
+          {error
+            ? "Something went wrong"
+            : loading
+            ? "Loading..."
+            : categories?.map((category) => (
+                <div className="items" key={category.id}>
+                  <Link
+                    key={category.id}
+                    className="links"
+                    to={`/category-products/${category.id}`}
+                  >
+                    {category.attributes.title}
+                  </Link>
+                </div>
+              ))}
           <div className="icons">
-            <div className="items">
+            {/* <div className="items">
               <BsSearch />
             </div>
             <div className="items">
@@ -112,7 +127,7 @@ function Navbar({
             </div>
             <div className="items">
               <AiOutlineHeart />
-            </div>
+            </div> */}
             <div className="items" onClick={() => setOpenCart((p) => !p)}>
               <AiOutlineShoppingCart />
               <span>{totalProductsInCart()}</span>
