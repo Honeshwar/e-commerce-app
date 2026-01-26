@@ -153,7 +153,8 @@ function Products() {
               {/* <span>{data?.attributes?.additionalInfo ?? "No Additional Info"}</span> */}
               <hr />
               <span>FAQ</span>
-              <span>{data?.attributes?.faq ?? "No FAQ"}</span>
+              {/* data?.attributes?.faqs ?? */}
+              <span>{"No FAQ"}</span>
             </div>
           </div>
         </>

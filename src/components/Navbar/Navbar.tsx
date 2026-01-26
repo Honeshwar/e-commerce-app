@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 // Icons used in the application
 import {
-  MdKeyboardArrowDown,
-  BsSearch,
-  BiUserCircle,
-  AiOutlineHeart,
+  // MdKeyboardArrowDown,
+  // BsSearch,
+  // BiUserCircle,
+  // AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "../../utils/constant";
 
