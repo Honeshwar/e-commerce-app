@@ -80,7 +80,7 @@ function Cart() {
         <span>SUBTOTAL</span>
         <span>&#8377;{totalPrice()}</span>
       </div>
-      <button type="button" className="checkout" onClick={handlePayment}>
+      <button type="button" className="checkout" onClick={paymentOnProgreess ? undefined : handlePayment}>
         {paymentOnProgreess ? "Proceeding....." : " PROCEED TO CHECKOUT"}
       </button>
       <span
