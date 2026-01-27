@@ -113,9 +113,9 @@
       flex-direction: column-reverse;
       .images {
         display: flex;
-        justify-content: space-between;
-        gap: 50px;
+        gap: 20px;
         img {
+          border: 1px solid black;
           height: 50px;
           width: 70px;
         }

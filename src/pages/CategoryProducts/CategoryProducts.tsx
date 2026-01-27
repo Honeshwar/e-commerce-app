@@ -35,6 +35,7 @@ function Category() {
   } = useFetch(
     `/categories/${categoryId}?populate=*` // to get caterory by id , get data , so we can use to set banner,title
   );
+
   const selectSubCategoryHandler = (e: any) => {
     let subCatId = e.target.value;
     let isChecked = e.target.checked; // boolean but in html on string something
@@ -155,6 +156,65 @@ function Category() {
                 </div>
               )}
             </div>
+
+            <div className="inner-left left">
+              <div className="filterItems">
+                <h2>Product Categories</h2>
+                {data?.map((item) => (
+                  <div className="inputItems" key={item.id}>
+                    <input
+                      type="checkbox"
+                      id={item.id + ""}
+                      value={item.id}
+                      onClick={selectSubCategoryHandler}
+                    />
+                    <label htmlFor={item.id + ""}>{item.attributes?.title}</label>
+                  </div>
+                ))}
+                {!data ||
+                  (data?.length === 0 && (
+                    <span>There is no subCategories for this category!</span>
+                  ))}
+              </div>
+              {/* <div className="filterItems">
+                <h2>Filter By Price</h2>
+                <div className="inputItems range">
+                  <span>0</span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={10000}
+                    defaultValue={100}
+                    onChange={prizeRangeHandler}
+                    ref={range}
+                  />
+                  <span>{range.current}</span>
+                </div>
+              </div> */}
+              <div className="filterItems">
+                <h2>Sort By</h2>
+                <div className="inputItems">
+                  <input
+                    type="radio"
+                    id="low"
+                    name="price"
+                    onClick={() => setSortBy("asc")}
+                  />
+                  <label htmlFor="low">low</label>
+                </div>
+                <div className="inputItems">
+                  <input
+                    type="radio"
+                    id="high"
+                    name="price"
+                    onClick={() => setSortBy("desc")}
+                  />
+                  <label htmlFor="high">high</label>
+                  {/* use labeling and focusing on click */}
+                </div>
+              </div>
+            </div>
+
             {/* category related list */}
             {/* {maxPrice === range.current && ( */}
             <List
