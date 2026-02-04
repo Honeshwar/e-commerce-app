@@ -138,6 +138,14 @@ Your app should now run on `http://localhost:5173/`.
 
 ---
 
-✅ That’s it — you’ve migrated from CRA to Vite!
+ That’s it — you’ve migrated from CRA to Vite!
 
 ---
+
+
+"scripts": {
+    "dev": "vite", // default env development
+    "build": "tsc -b && vite build",// default env production
+    "lint": "eslint .",
+    "preview": "vite preview" // default env development,  --mode change env(staging, production, development)
+  },

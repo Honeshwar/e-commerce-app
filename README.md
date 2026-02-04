@@ -29,6 +29,12 @@ The app provides a smooth shopping experience with product browsing, cart manage
 <p align="center">
   <img src="./public/screenshots/5.png" alt="Portfolio Screenshot" width="800"/>
 </p>
+<p align="center">
+  <img src="./public/screenshots/6.png" alt="Portfolio Screenshot" width="800"/>
+</p>
+<p align="center">
+  <img src="./public/screenshots/7.png" alt="Portfolio Screenshot" width="800"/>
+</p>
 
 ---
 
