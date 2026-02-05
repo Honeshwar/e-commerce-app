@@ -71,3 +71,5 @@ The app provides a smooth shopping experience with product browsing, cart manage
 ```bash
 git clone https://github.com/Honeshwar/e-commerce-app.git
 cd e-commerce-app
+npm install
+npm run dev
