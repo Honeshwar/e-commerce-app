@@ -3,16 +3,16 @@
 A modern, fast, and scalable **E-Commerce web application** built using **React + TypeScript + Vite**.  
 The app provides a smooth shopping experience with product browsing, cart management, secure payments via **Stripe**, and global state handling using **Redux Toolkit**.
 
----
 
-### 🔗 Hosted Link
+
+## 🔗 Hosted Link
 
 - Website Link: https://honeshwar-store.netlify.app/
 - Backend Service code: https://github.com/Honeshwar/ecommerce-strapi
 
----
 
-### 📸 Screenshot
+
+## 📸 Screenshot
 
 <p align="center">
   <img src="./public/screenshots/1.png" alt="Portfolio Screenshot" width="800"/>
@@ -36,9 +36,9 @@ The app provides a smooth shopping experience with product browsing, cart manage
   <img src="./public/screenshots/7.png" alt="Portfolio Screenshot" width="800"/>
 </p>
 
----
 
-### 🚀 Features
+
+## 🚀 Features
 
 - 🧾 Product listing & details
 - 🛍️ Add to cart / remove from cart
@@ -50,9 +50,9 @@ The app provides a smooth shopping experience with product browsing, cart manage
 - ⚡ Fast build & HMR powered by Vite
 - 🧠 Scalable state management using Redux Toolkit
 
----
 
-### 🛠 Tech Stack
+
+## 🛠 Tech Stack
 
 - **React 19 + TypeScript** (Vite)
 - **Redux Toolkit** & **React Redux**
@@ -64,9 +64,9 @@ The app provides a smooth shopping experience with product browsing, cart manage
 - **React Toastify**
 - **ESLint**
 
----
 
-### 🚀 Getting Started (Local Setup)
+
+## 🚀 Getting Started (Local Setup)
 
 ```bash
 git clone https://github.com/Honeshwar/e-commerce-app.git
