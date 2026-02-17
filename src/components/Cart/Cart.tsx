@@ -4,13 +4,11 @@ import { AiFillDelete } from "../../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, resetCart } from "../../redux/cartReducer";
 import { loadStripe } from "@stripe/stripe-js";
-// import makeRequestAPI from "../../utils/makeRequestAPI";
-import axios from "axios";
+import makeRequestAPI from "../../utils/makeRequestAPI";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type { Products } from "../../redux/types/cartReducer.types";
 import type { ReduxStateType } from "../../redux/types/globals.types";
-import baseUrl from "../../utils/baseUrl";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -36,7 +34,7 @@ function Cart() {
     try {
       const stripe = await stripePromise;
       //it return by a controller that we make in order folder in strapi
-      const res = await axios.post(baseUrl+"/orders", {
+      const res = await makeRequestAPI.post("/orders", {
         products,
       }); // validate orders and create stripe session at server and stripe session provide for payment, also payment methods,shipping country set. after payment where to redirect or failed payment
       await stripe?.redirectToCheckout({
